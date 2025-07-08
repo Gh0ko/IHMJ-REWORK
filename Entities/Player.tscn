@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxknsgmpe0omy"]
+
+[ext_resource type="Script" uid="uid://dwqv65m8ieqgg" path="res://addons/finite_state_machine/scripts/state_machine.gd" id="1_1iada"]
+[ext_resource type="Script" uid="uid://pp4kpklg3bfp" path="res://Scripts/EntitiesBehaviour/player.gd" id="1_2a4id"]
+[ext_resource type="Script" uid="uid://cs6p0rxmrqml" path="res://Scripts/States/CharacterStates/Idle.gd" id="2_0gd87"]
+[ext_resource type="PackedScene" uid="uid://bbv2vdywjcjft" path="res://Components/debug_component.tscn" id="2_drum4"]
+[ext_resource type="Script" uid="uid://dcxe6jqkxmv8" path="res://Scripts/States/CharacterStates/Walking.gd" id="4_2a4id"]
+[ext_resource type="Script" uid="uid://b1xl68l0yb378" path="res://Scripts/States/Talking.gd" id="6_drum4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7jvw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_c7jvw"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_2a4id")
+
+[node name="DebugComponent" parent="." instance=ExtResource("2_drum4")]
+offset_left = 28.0
+offset_top = -39.0
+offset_right = 28.0
+offset_bottom = -39.0
+Labels = Array[String](["test"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_c7jvw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 4.76837e-07)
+scale = Vector2(40, 40)
+texture = SubResource("CanvasTexture_c7jvw")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+script = ExtResource("1_1iada")
+current_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://dwqv65m8ieqgg"
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("walking_state", "talking")]
+script = ExtResource("2_0gd87")
+speed = 0.0
+acceleration = 0.0
+walking_state = NodePath("../Walking")
+talking = NodePath("../Talking")
+metadata/_custom_type_script = "uid://cy5cvsq5uplwa"
+
+[node name="Walking" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "talking")]
+script = ExtResource("4_2a4id")
+speed = 400.0
+idle_state = NodePath("../Idle")
+talking = NodePath("../Talking")
+metadata/_custom_type_script = "uid://v0o1vjdnj0ve"
+
+[node name="Talking" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("6_drum4")
+idle_state = NodePath("../Idle")
+metadata/_custom_type_script = "uid://v0o1vjdnj0ve"
