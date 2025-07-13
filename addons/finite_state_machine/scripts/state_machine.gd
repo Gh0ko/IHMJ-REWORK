@@ -1,6 +1,7 @@
 @icon("../icons/state_machine.svg")
 class_name StateMachine
 extends Node
+var States : Dictionary[String,StateMachineState]
 
 
 ## Node that represents an implementation of the finite state machine pattern.
@@ -38,6 +39,11 @@ func _ready() -> void:
 	for child in get_children():
 		if child is StateMachineState and child != current_state:
 			child.process_mode = Node.PROCESS_MODE_DISABLED
+		if child is StateMachineState:
+			States[str(child.name).capitalize()] = child
+			print(States)
+			
+	
 
 
 # Called by the 'draw' signal emitted from the debug draw CanvasItem node.
@@ -49,7 +55,7 @@ func _on_debug_draw_draw() -> void:
 		debug_draw.draw_string(ThemeDB.fallback_font, position, current_state.name, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, debug_draw_color)
 
 
-# Called when the node exits the scene tree.
+# Called when the node exits the scene tree.	
 func _exit_tree() -> void:
 	# Exit from the last state
 	if is_instance_valid(current_state):

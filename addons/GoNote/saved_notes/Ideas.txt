@@ -1,0 +1,12 @@
+--------------------------------------------Español------------------------------------------------------------------
+- Eventos basado en sistema de puntos
+- Apostar. Las monedas se ganan a partir de los minijuegos y es posible conseguir cosmeticos, ropa, etc, los cuales cambiarian la reacciones de ciertos npcs o permite ciertos eventos
+- Capas de sprites customizables (Sprite de cara, Sprite de camisa, Sprite de Pantalones, Gorras, etc) se podrian acceder a travez del armario 
+- Animacion de hablar en cualquier estado a traves de los sprites por capas
+
+--------------------------------------------ENGLISH------------------------------------------------------------------
+- Achievements
+- Events by Point Based System 
+- Gambling, Coins earned by playing minigames in PC and it is possible to earn cosmetics, clothes, etc, which can change the reactions of certain npcs or allow certain events
+- Customizable Sprite Layers (Face sprite, Shirt Sprite, Pants sprite, Hats, etc) these can be accessed via the closet
+- Face Talking Animation in any state with the Sprite Layers

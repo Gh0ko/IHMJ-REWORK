@@ -3,8 +3,6 @@ extends CharacterState
 @export_custom(PROPERTY_HINT_NONE, "suffix:px/s") var speed: float = 200.0
 @export_custom(PROPERTY_HINT_NONE, "suffix:px/s²") var acceleration: float = 2000.0
 
-@export var idle_state: StateMachineState = null
-@export var talking: StateMachineState = null
 # Called when the state machine enters this state.
 func _enter_state() -> void:
 	pass
@@ -14,7 +12,7 @@ func _process(delta: float) -> void:
 	var direction = Input.get_vector("left","right","up","down")
 	character.velocity = direction * speed
 	if direction == Vector2.ZERO:
-		get_state_machine().current_state = idle_state
+		get_state_machine().current_state = get_state_machine().States["Idle"]
 	
 func _physics_process(delta: float) -> void:
 	character.move_and_slide()

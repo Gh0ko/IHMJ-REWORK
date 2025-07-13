@@ -35,19 +35,13 @@ script = ExtResource("1_1iada")
 current_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://dwqv65m8ieqgg"
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("walking_state", "talking")]
+[node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("2_0gd87")
-speed = 0.0
-acceleration = 0.0
-walking_state = NodePath("../Walking")
-talking = NodePath("../Talking")
 metadata/_custom_type_script = "uid://cy5cvsq5uplwa"
 
-[node name="Walking" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "talking")]
+[node name="Walking" type="Node" parent="StateMachine"]
 script = ExtResource("4_2a4id")
 speed = 400.0
-idle_state = NodePath("../Idle")
-talking = NodePath("../Talking")
 metadata/_custom_type_script = "uid://v0o1vjdnj0ve"
 
 [node name="Talking" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]

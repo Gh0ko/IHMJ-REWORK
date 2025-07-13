@@ -1,6 +1,7 @@
-class_name Idle
 extends CharacterState
 
+@export var idle_state: StateMachineState = null
+@export var pc_state: StateMachineState = null
 
 # Called when the state machine enters this state.
 func _enter_state() -> void:
@@ -9,15 +10,8 @@ func _enter_state() -> void:
 
 # Called every frame when this state is active.
 func _process(delta: float) -> void:
-	#Idle Sprite/Animation probably
 	pass
-	
-func _unhandled_input(event: InputEvent) -> void:
-	if Input.get_vector("left","right","up","down"):
-		get_state_machine().current_state = get_state_machine().States["Walking"]
-	
-func _physics_process(_delta: float) -> void:
-	pass
+
 
 # Called when the state machine exits this state.
 func _exit_state() -> void:
