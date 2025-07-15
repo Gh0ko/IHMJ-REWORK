@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjgtuvc6qeup2"]
+
+[ext_resource type="Script" uid="uid://csh8ehu8dxsvu" path="res://Scripts/Computer/apps.gd" id="1_aosh6"]
+
+[node name="exampleApp" type="Window"]
+auto_translate_mode = 1
+disable_3d = true
+title = "I hate my life"
+initial_position = 1
+size = Vector2i(640, 360)
+visible = false
+theme_override_constants/resize_margin = 20
+script = ExtResource("1_aosh6")
