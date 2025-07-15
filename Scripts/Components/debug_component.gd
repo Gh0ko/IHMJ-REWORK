@@ -1,6 +1,5 @@
 extends Control
 
-@export_custom(PROPERTY_HINT_ARRAY_TYPE,"Variables") var Labels : Array[String]
 @onready var velocity: Label = $Velocity
 
 
