@@ -1,7 +1,6 @@
 class_name Idle
 extends CharacterState
 
-
 # Called when the state machine enters this state.
 func _enter_state() -> void:
 	character.velocity = Vector2.ZERO
@@ -14,7 +13,7 @@ func _process(delta: float) -> void:
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.get_vector("left","right","up","down"):
-		get_state_machine().current_state = get_state_machine().States["Walking"]
+		get_state_machine().current_state = StateMachine.States["Walking"]
 	
 func _physics_process(_delta: float) -> void:
 	pass

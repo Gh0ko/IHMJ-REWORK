@@ -1,7 +1,8 @@
 @icon("../icons/state_machine.svg")
 class_name StateMachine
 extends Node
-var States : Dictionary[String,StateMachineState]
+
+static var States : Dictionary[String,StateMachineState]
 
 
 ## Node that represents an implementation of the finite state machine pattern.
