@@ -5,9 +5,12 @@
 [node name="exampleApp" type="Window"]
 auto_translate_mode = 1
 disable_3d = true
+canvas_item_default_texture_filter = 0
 title = "I hate my life"
-initial_position = 1
+position = Vector2i(320, 180)
 size = Vector2i(640, 360)
 visible = false
+content_scale_mode = 1
+content_scale_aspect = 2
 theme_override_constants/resize_margin = 20
 script = ExtResource("1_aosh6")

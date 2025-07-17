@@ -1,14 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://dg48op23xmub3"]
+[gd_scene load_steps=11 format=3 uid="uid://dg48op23xmub3"]
 
 [ext_resource type="Texture2D" uid="uid://bq8ut2hsckmvr" path="res://Textures/Placeholder/pcbg.jpeg" id="1_peafa"]
 [ext_resource type="Script" uid="uid://iyjcacv8h4o3" path="res://Scripts/Computer/pc.gd" id="1_yr7hc"]
 [ext_resource type="Script" uid="uid://ch2pbpiyd8x3a" path="res://Scripts/Computer/backgroundControl.gd" id="2_ig2il"]
 [ext_resource type="PackedScene" uid="uid://bjgtuvc6qeup2" path="res://Scenes/computer/windowApp.tscn" id="2_yo1eb"]
 [ext_resource type="PackedScene" uid="uid://b7yonxoo5dpi" path="res://Scenes/computer/appShortCut.tscn" id="2_yr7hc"]
-[ext_resource type="Script" uid="uid://dkycgqcm0mj6o" path="res://Scenes/computer/Apps/applicationClass.gd" id="3_8qrke"]
-[ext_resource type="Resource" uid="uid://ba5iept5ho2n8" path="res://Scenes/computer/Apps/IHMJ.tres" id="4_hapxn"]
+[ext_resource type="Script" uid="uid://dkycgqcm0mj6o" path="res://Scenes/computer/applicationClass.gd" id="3_8qrke"]
+[ext_resource type="Resource" uid="uid://ba5iept5ho2n8" path="res://Scenes/computer/AppsResources/IHMJ.tres" id="4_hapxn"]
+[ext_resource type="Texture2D" uid="uid://gg4rc41qwnga" path="res://icon.svg" id="4_tkybg"]
+[ext_resource type="PackedScene" uid="uid://cxm72xq2670eb" path="res://Scenes/computer/barApp.tscn" id="6_hapxn"]
 
-[node name="Computer" type="ColorRect" node_paths=PackedStringArray("ApplicationsNode", "applist")]
+[sub_resource type="Resource" id="Resource_hedl6"]
+script = ExtResource("3_8qrke")
+appName = "sadsad"
+canStack = true
+canOpen = true
+sceneToLoad = ExtResource("2_yr7hc")
+icon = ExtResource("4_tkybg")
+metadata/_custom_type_script = "uid://dkycgqcm0mj6o"
+
+[node name="Computer" type="ColorRect" node_paths=PackedStringArray("ApplicationsNode", "applist", "taskbar")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,11 +28,13 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_yr7hc")
+apps = Array[ExtResource("3_8qrke")]([ExtResource("4_hapxn"), SubResource("Resource_hedl6")])
 APP_SHORT_CUT = ExtResource("2_yr7hc")
-apps = Array[ExtResource("3_8qrke")]([ExtResource("4_hapxn")])
+AppWindow = ExtResource("2_yo1eb")
+taskApp = ExtResource("6_hapxn")
 ApplicationsNode = NodePath("Applications")
 applist = NodePath("Desktop/Applist")
-AppWindow = ExtResource("2_yo1eb")
+taskbar = NodePath("SYS/TaskColor/Taskbar")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -88,3 +101,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 10
+theme_override_constants/separation = 15

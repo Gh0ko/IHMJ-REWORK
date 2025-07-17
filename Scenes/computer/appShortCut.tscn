@@ -19,6 +19,8 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("1_i1cg3")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="AppName" type="Label" parent="VBoxContainer"]
 layout_mode = 2
