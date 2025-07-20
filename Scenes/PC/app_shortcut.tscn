@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7yonxoo5dpi"]
 
 [ext_resource type="Texture2D" uid="uid://dtqj2jq14wjqg" path="res://Textures/Computer/unknowApp.png" id="1_i1cg3"]
-[ext_resource type="Script" uid="uid://cm6gdnfelgr4y" path="res://Scripts/Computer/appShortCut.gd" id="1_r1kub"]
+[ext_resource type="Script" uid="uid://cm6gdnfelgr4y" path="res://Scripts/Computer/app_shortcut.gd" id="1_r1kub"]
 
 [node name="AppButton" type="Button"]
 custom_minimum_size = Vector2(70, 90)
@@ -19,6 +19,8 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("1_i1cg3")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="AppName" type="Label" parent="VBoxContainer"]
 layout_mode = 2

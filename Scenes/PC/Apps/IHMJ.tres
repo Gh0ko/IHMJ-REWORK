@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="application" load_steps=4 format=3 uid="uid://ba5iept5ho2n8"]
+
+[ext_resource type="Script" uid="uid://dkycgqcm0mj6o" path="res://Scripts/Computer/application_class.gd" id="1_b6iqg"]
+[ext_resource type="PackedScene" uid="uid://dxknsgmpe0omy" path="res://Entities/player.tscn" id="1_j1phu"]
+[ext_resource type="Texture2D" uid="uid://gg4rc41qwnga" path="res://icon.svg" id="1_ncc83"]
+
+[resource]
+script = ExtResource("1_b6iqg")
+appName = "I hate my jobbb so much help"
+canStack = false
+canOpen = true
+sceneToLoad = ExtResource("1_j1phu")
+icon = ExtResource("1_ncc83")
+metadata/_custom_type_script = "uid://dkycgqcm0mj6o"

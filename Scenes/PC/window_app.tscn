@@ -6,8 +6,11 @@
 auto_translate_mode = 1
 disable_3d = true
 title = "I hate my life"
-initial_position = 1
+position = Vector2i(280, 430)
 size = Vector2i(640, 360)
 visible = false
 theme_override_constants/resize_margin = 20
 script = ExtResource("1_aosh6")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

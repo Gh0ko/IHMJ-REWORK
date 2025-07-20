@@ -1,13 +1,13 @@
-[gd_scene load_steps=35 format=3 uid="uid://dxknsgmpe0omy"]
+[gd_scene load_steps=34 format=3 uid="uid://dxknsgmpe0omy"]
 
-[ext_resource type="Script" uid="uid://pp4kpklg3bfp" path="res://Scripts/EntitiesBehaviour/player.gd" id="1_s1j76"]
-[ext_resource type="PackedScene" uid="uid://bbv2vdywjcjft" path="res://Components/debug_component.tscn" id="2_6jj0l"]
-[ext_resource type="PackedScene" uid="uid://csyh8kye856lw" path="res://Components/interacting_component.tscn" id="2_ua6mu"]
-[ext_resource type="Texture2D" uid="uid://c0vg1si4tsth7" path="res://Textures/Placeholder/Player/OldMayui-Sheet.png" id="3_ua6mu"]
-[ext_resource type="Script" uid="uid://dwqv65m8ieqgg" path="res://addons/finite_state_machine/scripts/state_machine.gd" id="4_xy0x1"]
-[ext_resource type="Script" uid="uid://cs6p0rxmrqml" path="res://Scripts/States/CharacterStates/Idle.gd" id="5_xakct"]
-[ext_resource type="Script" uid="uid://dcxe6jqkxmv8" path="res://Scripts/States/CharacterStates/Walking.gd" id="6_k47j4"]
-[ext_resource type="Script" uid="uid://b1xl68l0yb378" path="res://Scripts/States/Talking.gd" id="7_klb6e"]
+[ext_resource type="Script" uid="uid://dwqv65m8ieqgg" path="res://addons/finite_state_machine/scripts/state_machine.gd" id="1_1iada"]
+[ext_resource type="Script" uid="uid://pp4kpklg3bfp" path="res://Scripts/EntitiesBehaviour/player.gd" id="1_2a4id"]
+[ext_resource type="Script" uid="uid://cs6p0rxmrqml" path="res://Scripts/States/CharacterStates/Idle.gd" id="2_0gd87"]
+[ext_resource type="Script" uid="uid://dy3rd04ntb1bd" path="res://Scripts/Components/animation_component.gd" id="2_io258"]
+[ext_resource type="PackedScene" uid="uid://bbv2vdywjcjft" path="res://Components/DebugComponent.tscn" id="2_w6hej"]
+[ext_resource type="Script" uid="uid://dcxe6jqkxmv8" path="res://Scripts/States/CharacterStates/Walking.gd" id="4_2a4id"]
+[ext_resource type="Texture2D" uid="uid://c0vg1si4tsth7" path="res://Textures/Placeholder/Player/OldMayui-Sheet.png" id="4_w6hej"]
+[ext_resource type="Script" uid="uid://b1xl68l0yb378" path="res://Scripts/States/Talking.gd" id="6_drum4"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w6hej"]
 animation = &"idle_left"
@@ -72,29 +72,6 @@ states/Idle/position = Vector2(357.333, 122)
 states/Walking/node = SubResource("AnimationNodeBlendSpace2D_hmggr")
 states/Walking/position = Vector2(357.333, 34)
 transitions = ["Walking", "Idle", SubResource("AnimationNodeStateMachineTransition_yytyf"), "Idle", "Walking", SubResource("AnimationNodeStateMachineTransition_mwl8m"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_w6hej")]
-
-[sub_resource type="GDScript" id="GDScript_io258"]
-script/source = "extends AnimationTree
-
-@export_node_path(\"CharacterBody2D\",\"StaticBody2D\",\"RigidBody2D\") var character: NodePath = \"../\"
-@onready var player = get_node(character)
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with unction body.
-
-func _physics_process(delta: float) -> void:
-	var idle = !player.velocity
-	
-	if !idle:
-		player.last_direction = player.velocity.normalized()
-	
-	set(\"parameters/Idle/blend_position\", player.last_direction)
-	set(\"parameters/Walking/blend_position\", player.last_direction)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
 
 [sub_resource type="Animation" id="Animation_paumt"]
 resource_name = "Placeholder_down"
@@ -256,24 +233,19 @@ _data = {
 size = Vector2(12, 12.5)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
-script = ExtResource("1_s1j76")
+script = ExtResource("1_2a4id")
 state_machine = NodePath("StateMachine")
 
-[node name="PlaceholderCamera" type="Camera2D" parent="."]
-
-[node name="InteractingComponent" parent="." instance=ExtResource("2_ua6mu")]
-scale = Vector2(3.73691, 3.73691)
-
-[node name="DebugComponent" parent="." instance=ExtResource("2_6jj0l")]
+[node name="DebugComponent" parent="." instance=ExtResource("2_w6hej")]
 _character = NodePath("..")
-Debug = 39
+Debug = 63
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_8td47")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0.997573, -0.00602412)
 parameters/Walking/blend_position = Vector2(0.293689, -0.391566)
-script = SubResource("GDScript_io258")
+script = ExtResource("2_io258")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -287,29 +259,30 @@ shape = SubResource("RectangleShape2D_c7jvw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.76837e-07, 4.76837e-07)
-texture = ExtResource("3_ua6mu")
+texture = ExtResource("4_w6hej")
 hframes = 12
 vframes = 7
 frame = 38
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
-script = ExtResource("4_xy0x1")
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "debug_draw")]
+script = ExtResource("1_1iada")
 current_state = NodePath("Idle")
+debug_draw = NodePath("../DebugComponent")
 metadata/_custom_type_script = "uid://dwqv65m8ieqgg"
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_tree")]
-script = ExtResource("5_xakct")
+script = ExtResource("2_0gd87")
 animation_tree = NodePath("../../AnimationTree")
 metadata/_custom_type_script = "uid://cy5cvsq5uplwa"
 
 [node name="Walking" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_tree")]
-script = ExtResource("6_k47j4")
+script = ExtResource("4_2a4id")
 speed = 400.0
 animation_tree = NodePath("../../AnimationTree")
 metadata/_custom_type_script = "uid://v0o1vjdnj0ve"
 
 [node name="Talking" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "animation_tree")]
-script = ExtResource("7_klb6e")
+script = ExtResource("6_drum4")
 idle_state = NodePath("../Idle")
 animation_tree = NodePath("../../AnimationTree")
 metadata/_custom_type_script = "uid://v0o1vjdnj0ve"

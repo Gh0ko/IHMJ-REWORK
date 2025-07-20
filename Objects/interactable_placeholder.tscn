@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjx4leceakrbn"]
+
+[ext_resource type="Script" uid="uid://jnlisu70c2n" path="res://Scripts/Objects/testinteractable.gd" id="1_7wkd3"]
+[ext_resource type="PackedScene" uid="uid://dyyahnbcixiqx" path="res://Components/interactable_component.tscn" id="2_7wkd3"]
+[ext_resource type="Texture2D" uid="uid://gg4rc41qwnga" path="res://icon.svg" id="2_cyarw"]
+
+[node name="InteractablePlaceholder" type="Node2D" node_paths=PackedStringArray("interactable_area", "sprite")]
+script = ExtResource("1_7wkd3")
+interactable_area = NodePath("InteractableArea")
+sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://bd8qp2n7sqnsi"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cyarw")
+
+[node name="InteractableArea" parent="." instance=ExtResource("2_7wkd3")]
+scale = Vector2(6.64251, 6.64251)

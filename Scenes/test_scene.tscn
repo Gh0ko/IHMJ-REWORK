@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://nu1d1ikulfj7"]
+[gd_scene load_steps=3 format=3 uid="uid://nu1d1ikulfj7"]
 
-[ext_resource type="PackedScene" uid="uid://dxknsgmpe0omy" path="res://Entities/Player.tscn" id="1_3dogw"]
+[ext_resource type="PackedScene" uid="uid://dxknsgmpe0omy" path="res://Entities/player.tscn" id="1_3dogw"]
+[ext_resource type="PackedScene" uid="uid://bjx4leceakrbn" path="res://Objects/interactable_placeholder.tscn" id="2_r5l72"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -9,5 +10,8 @@ offset_right = 1155.0
 offset_bottom = 648.0
 color = Color(0.665064, 0.924879, 0.563863, 1)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_3dogw")]
-position = Vector2(44, 32)
+[node name="Interactable_placeholder" parent="." instance=ExtResource("2_r5l72")]
+position = Vector2(737, 166)
+
+[node name="Player" parent="." instance=ExtResource("1_3dogw")]
+position = Vector2(172, 67)

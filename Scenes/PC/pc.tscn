@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://dg48op23xmub3"]
+
+[ext_resource type="Script" uid="uid://iyjcacv8h4o3" path="res://Scripts/Computer/pc.gd" id="1_ankml"]
+[ext_resource type="Script" uid="uid://dkycgqcm0mj6o" path="res://Scripts/Computer/application_class.gd" id="2_2uctt"]
+[ext_resource type="Texture2D" uid="uid://bq8ut2hsckmvr" path="res://Textures/Placeholder/pcbg.jpeg" id="2_86iof"]
+[ext_resource type="Resource" uid="uid://ba5iept5ho2n8" path="res://Scenes/PC/Apps/IHMJ.tres" id="3_ek8wm"]
+[ext_resource type="Script" uid="uid://ch2pbpiyd8x3a" path="res://Scripts/Computer/background_control.gd" id="3_v7arf"]
+[ext_resource type="PackedScene" uid="uid://bjgtuvc6qeup2" path="res://Scenes/PC/window_app.tscn" id="3_yelcm"]
+[ext_resource type="PackedScene" uid="uid://cxm72xq2670eb" path="res://Scenes/PC/taskbar_app.tscn" id="4_gd1ma"]
+[ext_resource type="PackedScene" uid="uid://b7yonxoo5dpi" path="res://Scenes/PC/app_shortcut.tscn" id="5_gd1ma"]
+
+[sub_resource type="Resource" id="Resource_eb47h"]
+script = ExtResource("2_2uctt")
+appName = "anal sex"
+canStack = true
+canOpen = true
+sceneToLoad = ExtResource("5_gd1ma")
+icon = ExtResource("2_86iof")
+metadata/_custom_type_script = "uid://dkycgqcm0mj6o"
+
+[node name="Computer" type="ColorRect" node_paths=PackedStringArray("applications_node", "taskbar_node", "shortcut_container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_ankml")
+apps = Array[ExtResource("2_2uctt")]([ExtResource("3_ek8wm"), SubResource("Resource_eb47h")])
+APP_SHORT_CUT = ExtResource("5_gd1ma")
+window_app = ExtResource("3_yelcm")
+taskbar_app = ExtResource("4_gd1ma")
+applications_node = NodePath("Applications")
+taskbar_node = NodePath("UI/TaskColor/Taskbar")
+shortcut_container = NodePath("Desktop/ShortcutContainer")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_86iof")
+expand_mode = 5
+stretch_mode = 5
+script = ExtResource("3_v7arf")
+dim = 0.7
+
+[node name="Applications" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Desktop" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ShortcutContainer" type="HFlowContainer" parent="Desktop"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+
+[node name="UI" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TaskColor" type="ColorRect" parent="UI"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 10
+color = Color(0.187176, 0.187176, 0.187176, 1)
+
+[node name="Taskbar" type="HBoxContainer" parent="UI/TaskColor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 10

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxm72xq2670eb"]
+
+[ext_resource type="Script" uid="uid://cntqxxtpxvvuv" path="res://Scripts/Computer/taskbar_app.gd" id="1_eewq6"]
+
+[node name="barApp" type="TextureButton"]
+custom_minimum_size = Vector2(35, 35)
+offset_right = 8.0
+offset_bottom = 8.0
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("1_eewq6")

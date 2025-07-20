@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxm72xq2670eb"]
+
+[ext_resource type="Texture2D" uid="uid://bq8ut2hsckmvr" path="res://Textures/Placeholder/pcbg.jpeg" id="1_bdux5"]
+
+[node name="barApp" type="TextureButton"]
+custom_minimum_size = Vector2(35, 35)
+offset_right = 8.0
+offset_bottom = 8.0
+texture_normal = ExtResource("1_bdux5")
+ignore_texture_size = true
+stretch_mode = 5
